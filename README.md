@@ -29,35 +29,38 @@ A Next.js application with authentication, protected routes, and a clean coffee-
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/Wladyslaw13/Mini-Dashboard.git
    cd Mini-Dashboard
    ```
 
-3. Install dependencies:
+2. Install dependencies:
+
    ```bash
    npm install
    ```
 
-5. Set up environment variables:
+3. Set up environment variables:
    Create a .env file in the root directory with:
    ```dotenv
    DATABASE_URL="file:./dev.db"
    NEXTAUTH_SECRET="your-secret-key-here"
    NEXTAUTH_URL="http://localhost:3000"
    ```
-   
-6. Initialize the database:
+4. Initialize the database:
+
    ```bash
    npx prisma migrate dev --name init
    ```
 
-8. Run the development server:
+5. Run the development server:
+
    ```bash
    npm run dev
    ```
 
-10. Open http://localhost:3000 in your browser
+6. Open http://localhost:3000 in your browser
 
 ## Deployment
 
