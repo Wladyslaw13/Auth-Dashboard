@@ -1,11 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-// import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export default function RegisterPage() {
-	// const router = useRouter()
+	const router = useRouter()
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -33,7 +33,7 @@ export default function RegisterPage() {
 			}
 
 			// Redirect to login page after successful registration
-			window.location.href = '/login'
+			router.push('/login')
 		} catch (error) {
 			setError(error instanceof Error ? error.message : 'An error occurred')
 		} finally {

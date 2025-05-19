@@ -25,13 +25,7 @@ export default async function RootLayout({
 				<AuthProvider>
 					<NavBar session={session} />
 					<main>{children}</main>
-					<pre>
-						{JSON.stringify(`${session} - сессия внутри провайдера`, null, 2)}
-					</pre>
 				</AuthProvider>
-				<pre>
-					{JSON.stringify(`${session} - сессия вне провайдера`, null, 2)}
-				</pre>
 			</body>
 		</html>
 	)
