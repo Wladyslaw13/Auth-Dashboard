@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { getAuthSession } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 
@@ -14,6 +15,7 @@ export default async function ProfilePage() {
 				<h1 className='text-3xl font-bold text-[var(--accent)]'>
 					Profile Page
 				</h1>
+				<pre>{JSON.stringify(`${session.user} - сессия`, null, 2)}</pre>
 				<div className='space-y-4'>
 					<p className='text-lg'>
 						Welcome, {session.user.name || session.user.email}!

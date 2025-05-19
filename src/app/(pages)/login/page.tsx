@@ -27,9 +27,7 @@ export default function LoginPage() {
 			if (result?.error) {
 				setError('Invalid email or password')
 			} else {
-				setTimeout(() => {
-					window.location.href = '/profile'
-				}, 250)
+				window.location.href = '/profile'
 			}
 		} catch (error) {
 			setError(`An error occurred. Please try again. ${error}`)

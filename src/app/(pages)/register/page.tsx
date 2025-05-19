@@ -33,9 +33,7 @@ export default function RegisterPage() {
 			}
 
 			// Redirect to login page after successful registration
-			setTimeout(() => {
-				window.location.href = '/login'
-			}, 250)
+			window.location.href = '/login'
 		} catch (error) {
 			setError(error instanceof Error ? error.message : 'An error occurred')
 		} finally {
