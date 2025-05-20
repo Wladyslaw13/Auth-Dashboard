@@ -1,12 +1,12 @@
 'use client'
 
-import { Session } from 'next-auth'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-export default function NavBar({ session }: { session: Session | null }) {
+export default function NavBar() {
 	const pathname = usePathname()
+	const { data: session } = useSession()
 
 	return (
 		<nav className='bg-[var(--coffee-medium shadow)]'>

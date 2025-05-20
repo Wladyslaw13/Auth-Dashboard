@@ -7,9 +7,9 @@ export async function POST(request: Request) {
 		const { name, email, password } = await request.json()
 
 		// Validate input
-		if (!email || !password) {
+		if (!email || !password || !name) {
 			return NextResponse.json(
-				{ message: 'Email and password are required' },
+				{ message: 'All fields are required' },
 				{ status: 400 }
 			)
 		}
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
 		if (existingUser) {
 			return NextResponse.json(
 				{ message: 'User with this email already exists' },
-				{ status: 400 }
+				{ status: 409 }
 			)
 		}
 

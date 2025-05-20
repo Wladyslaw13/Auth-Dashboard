@@ -1,7 +1,8 @@
 import AuthProvider from '@/components/AuthProvider'
 import NavBar from '@/components/NavBar'
-import { getAuthSession } from '@/lib/auth'
+import { authOptions } from '@/lib/auth'
 import type { Metadata } from 'next'
+import { getServerSession } from 'next-auth'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
@@ -17,13 +18,13 @@ export default async function RootLayout({
 }: {
 	children: React.ReactNode
 }) {
-	const session = await getAuthSession()
+	const session = await getServerSession(authOptions)
 
 	return (
-		<html lang='en'>
+		<html>
 			<body className={inter.className}>
-				<AuthProvider>
-					<NavBar session={session} />
+				<AuthProvider session={session}>
+					<NavBar />
 					<main>{children}</main>
 				</AuthProvider>
 			</body>

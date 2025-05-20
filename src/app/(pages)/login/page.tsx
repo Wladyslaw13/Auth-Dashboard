@@ -2,11 +2,9 @@
 
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export default function LoginPage() {
-	const router = useRouter()
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
@@ -18,17 +16,14 @@ export default function LoginPage() {
 		setError('')
 
 		try {
-			const result = await signIn('credentials', {
+			await signIn('credentials', {
 				email,
 				password,
+				callbackUrl: '/profile',
+				redirect: true,
 			})
-
-			if (!result?.error) {
-				router.replace('/profile')
-				window.location.replace('/profile')
-			}
-		} catch (error) {
-			setError(`An error occurred. Please try again. ${error}`)
+		} catch (err) {
+			setError(`An unexpected error occurred. Please try again. ${err}`)
 		} finally {
 			setLoading(false)
 		}

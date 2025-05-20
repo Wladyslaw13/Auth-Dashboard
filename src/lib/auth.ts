@@ -1,16 +1,22 @@
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import bcrypt from 'bcrypt'
-import { getServerSession, NextAuthOptions } from 'next-auth'
+import { NextAuthOptions } from 'next-auth'
+import { JWT } from 'next-auth/jwt'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { prisma } from './prisma'
 
 export const authOptions: NextAuthOptions = {
 	adapter: PrismaAdapter(prisma),
+	secret: process.env.NEXTAUTH_SECRET,
 	providers: [
 		CredentialsProvider({
 			name: 'Credentials',
 			credentials: {
-				email: { label: 'Email', type: 'email' },
+				email: {
+					label: 'Email',
+					type: 'email',
+					placeholder: 'vladislav@mail.com',
+				},
 				password: { label: 'Password', type: 'password' },
 			},
 			async authorize(credentials) {
@@ -24,7 +30,8 @@ export const authOptions: NextAuthOptions = {
 					},
 				})
 
-				if (!user || !user.password) {
+				if (!user) {
+					console.log('User not found in credentials')
 					return null
 				}
 
@@ -48,17 +55,29 @@ export const authOptions: NextAuthOptions = {
 	session: {
 		strategy: 'jwt',
 	},
-	pages: {
-		signIn: '/login',
-	},
+	// pages: {
+	// 	signIn: '/login',
+	// },
 	callbacks: {
-		async session({ session, token }) {
-			if (token.sub && session.user) {
-				session.user.id = token.sub
+		async jwt({ token, user }): Promise<JWT> {
+			if (user) {
+				token.email = user.email ?? ''
+				token.id = user.id
+				token.name = user.name ?? ''
 			}
-			return session
+
+			return token
+		},
+		async session({ session, token }) {
+			return {
+				...session,
+				user: {
+					...session.user,
+					email: token.email,
+					id: token.id,
+					name: token.name,
+				},
+			}
 		},
 	},
 }
-
-export const getAuthSession = () => getServerSession(authOptions)

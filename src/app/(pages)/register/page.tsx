@@ -26,14 +26,11 @@ export default function RegisterPage() {
 				body: JSON.stringify({ name, email, password }),
 			})
 
-			const data = await response.json()
-
-			if (!response.ok) {
-				throw new Error(data.message || 'Something went wrong')
+			if (response.ok) {
+				router.push('/login')
+			} else {
+				console.log('Registration failed')
 			}
-
-			// Redirect to login page after successful registration
-			router.push('/login')
 		} catch (error) {
 			setError(error instanceof Error ? error.message : 'An error occurred')
 		} finally {

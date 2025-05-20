@@ -1,12 +1,12 @@
-export const dynamic = 'force-dynamic'
-import { getAuthSession } from '@/lib/auth'
-import { redirect } from 'next/navigation'
+'use client'
 
-export default async function ProfilePage() {
-	const session = await getAuthSession()
+import { useSession } from 'next-auth/react'
 
-	if (!session?.user) {
-		redirect('/login')
+export default function ProfilePage() {
+	const { data: session, status } = useSession()
+
+	if (status === 'loading') {
+		return <p>Loading...</p>
 	}
 
 	return (
@@ -16,9 +16,7 @@ export default async function ProfilePage() {
 					Profile Page
 				</h1>
 				<div className='space-y-4'>
-					<p className='text-lg'>
-						Welcome, {session.user.name || session.user.email}!
-					</p>
+					<p className='text-lg'>Welcome, {session?.user?.name || 'user'}!</p>
 					<p>
 						This is a protected page that only authenticated users can access.
 					</p>
@@ -28,10 +26,10 @@ export default async function ProfilePage() {
 						</h2>
 						<ul className='mt-2 space-y-2'>
 							<li>
-								<strong>Email:</strong> {session.user.email}
+								<strong>Email:</strong> {session?.user?.email}
 							</li>
 							<li>
-								<strong>User ID:</strong> {session.user.id}
+								<strong>User ID:</strong> {session?.user?.id}
 							</li>
 						</ul>
 					</div>
