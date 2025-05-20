@@ -1,3 +1,8 @@
+<img src="assets/Mini-Dashboard.png" />
+
+
+---
+
 # Mini Dashboard   <img src="src/app/icon.png" height="40" />
 
 A Next.js application with authentication, protected routes, and a clean coffee-milk UI theme.
