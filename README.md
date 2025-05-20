@@ -64,7 +64,7 @@ A Next.js application with authentication, protected routes, and a clean coffee-
 
 ## Deployment
 
-- This project is deployed on Vercel. You can view the live demo here (LINK).
+- This project is deployed on Vercel. You can view the live demo [here](https://mini-dashboard-ecru.vercel.app/).
 
 ## License
 
