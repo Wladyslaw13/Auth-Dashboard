@@ -11,9 +11,9 @@ export async function middleware(request: NextRequest) {
 	// Check if the path is the profile page
 	if (request.nextUrl.pathname.startsWith('/profile')) {
 		console.log(
-			`ТОКЕН - ${JSON.stringify(token)} ДАЛЕЕ СЕКРЕТ ${
-				process.env.NEXTAUTH_SECRET
-			}`
+			`ТОКЕН - ${JSON.stringify(token)} ДАЛЕЕ REQUEST ${JSON.stringify(
+				request
+			)}`
 		)
 		if (!token) {
 			// Redirect to login if not authenticated
