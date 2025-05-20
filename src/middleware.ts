@@ -5,11 +5,16 @@ import { NextResponse } from 'next/server'
 export async function middleware(request: NextRequest) {
 	const token = await getToken({
 		req: request,
+		secret: process.env.NEXTAUTH_SECRET,
 	})
 
 	// Check if the path is the profile page
 	if (request.nextUrl.pathname.startsWith('/profile')) {
-		console.log(token)
+		console.log(
+			`ТОКЕН - ${JSON.stringify(token)} ДАЛЕЕ СЕКРЕТ ${
+				process.env.NEXTAUTH_SECRET
+			}`
+		)
 		if (!token) {
 			// Redirect to login if not authenticated
 			return NextResponse.redirect(new URL('/login', request.url))
