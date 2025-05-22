@@ -3,6 +3,15 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { z } from 'zod'
+
+const registerSchema = z.object({
+	name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
+	email: z.string().email({ message: 'Invalid email address' }),
+	password: z
+		.string()
+		.min(6, { message: 'Password must be at least 6 characters' }),
+})
 
 export default function RegisterPage() {
 	const router = useRouter()
@@ -14,8 +23,22 @@ export default function RegisterPage() {
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
-		setLoading(true)
 		setError('')
+		setLoading(true)
+
+		const result = registerSchema.safeParse({ name, email, password })
+
+		if (!result.success) {
+			const errors = result.error.flatten().fieldErrors
+			const message =
+				errors.name?.[0] ||
+				errors.email?.[0] ||
+				errors.password?.[0] ||
+				'Invalid input'
+			setError(message)
+			setLoading(false)
+			return
+		}
 
 		try {
 			const response = await fetch('/api/register', {
@@ -29,7 +52,8 @@ export default function RegisterPage() {
 			if (response.ok) {
 				router.push('/login')
 			} else {
-				console.log('Registration failed')
+				const resJson = await response.json()
+				setError(resJson?.message || 'Registration failed')
 			}
 		} catch (error) {
 			setError(error instanceof Error ? error.message : 'An error occurred')

@@ -6,7 +6,6 @@ export async function POST(request: Request) {
 	try {
 		const { name, email, password } = await request.json()
 
-		// Validate input
 		if (!email || !password || !name) {
 			return NextResponse.json(
 				{ message: 'All fields are required' },
@@ -14,7 +13,6 @@ export async function POST(request: Request) {
 			)
 		}
 
-		// Check if user already exists
 		const existingUser = await prisma.user.findUnique({
 			where: { email },
 		})
@@ -26,10 +24,8 @@ export async function POST(request: Request) {
 			)
 		}
 
-		// Hash password
 		const hashedPassword = await bcrypt.hash(password, 10)
 
-		// Create user
 		const user = await prisma.user.create({
 			data: {
 				name,
@@ -38,7 +34,6 @@ export async function POST(request: Request) {
 			},
 		})
 
-		// Return user without password
 		return NextResponse.json(
 			{
 				id: user.id,

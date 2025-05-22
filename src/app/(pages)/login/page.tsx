@@ -2,7 +2,16 @@
 
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { z } from 'zod'
+
+const loginSchema = z.object({
+	email: z.string().email({ message: 'Invalid email address' }),
+	password: z
+		.string()
+		.min(6, { message: 'Password must be at least 6 characters' }),
+})
 
 export default function LoginPage() {
 	const [email, setEmail] = useState('')
@@ -10,10 +19,32 @@ export default function LoginPage() {
 	const [error, setError] = useState('')
 	const [loading, setLoading] = useState(false)
 
+	const searchParams = useSearchParams()
+	const errorParam = searchParams.get('error')
+
+	useEffect(() => {
+		if (errorParam === 'CredentialsSignin') {
+			setError('Invalid email or password')
+		} else if (errorParam) {
+			setError('Something went wrong')
+		}
+	}, [errorParam])
+
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
-		setLoading(true)
 		setError('')
+		setLoading(true)
+
+		const result = loginSchema.safeParse({ email, password })
+
+		if (!result.success) {
+			const errors = result.error.flatten().fieldErrors
+			const message =
+				errors.email?.[0] || errors.password?.[0] || 'Invalid input'
+			setError(message)
+			setLoading(false)
+			return
+		}
 
 		try {
 			await signIn('credentials', {
@@ -24,7 +55,6 @@ export default function LoginPage() {
 			})
 		} catch (err) {
 			setError(`An unexpected error occurred. Please try again. ${err}`)
-		} finally {
 			setLoading(false)
 		}
 	}
@@ -74,7 +104,7 @@ export default function LoginPage() {
 								autoComplete='current-password'
 								required
 								value={password}
-								onChange={e => setPassword(e.target.value.trim())}
+								onChange={e => setPassword(e.target.value)}
 								className='mt-1 block w-full rounded-md border bg-[var(--milk-light)] p-2 focus:border-[var(--accent)] focus:ring-[var(--accent)]'
 							/>
 						</div>
