@@ -9,49 +9,45 @@ export default function NavBar() {
 	const { data: session } = useSession()
 
 	return (
-		<nav className='bg-[var(--coffee-medium shadow)]'>
+		<nav className='bg-[var(--color-bg)] shadow'>
 			<div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-				<div className='flex h-16 justify-between'>
-					<div className='flex'>
-						<div className='flex flex-shrink-0 items-center'>
-							<span className='text-xl font-bold text-[var(--accent)]'>
-								Mini Dashboard
-							</span>
-						</div>
-						<div className='ml-6 flex items-center space-x-4'>
-							<Link
-								href='/'
-								className={`px-3 py-2 text-sm font-medium ${
-									pathname === '/'
-										? 'text-[var(--accent)]'
-										: 'text-gray-700 hover:text-[var(--accent)]'
-								}`}
-							>
-								Home
-							</Link>
-							<Link
-								href='/public'
-								className={`px-3 py-2 text-sm font-medium ${
-									pathname === '/public'
-										? 'text-[var(--accent)]'
-										: 'text-gray-700 hover:text-[var(--accent)]'
-								}`}
-							>
-								Public
-							</Link>
-							<Link
-								href='/profile'
-								className={`px-3 py-2 text-sm font-medium ${
-									pathname === '/profile'
-										? 'text-[var(--accent)]'
-										: 'text-gray-700 hover:text-[var(--accent)]'
-								}`}
-							>
-								Profile
-							</Link>
-						</div>
+				<div className='flex h-16 justify-between items-center'>
+					<div className='flex items-center space-x-6'>
+						<span className='text-xl font-bold text-[var(--color-accent)]'>
+							Mini Dashboard
+						</span>
+						<Link
+							href='/'
+							className={`px-3 py-2 text-sm font-medium ${
+								pathname === '/'
+									? 'text-[var(--color-accent)]'
+									: 'text-[var(--color-text)] hover:text-[var(--color-accent)]'
+							}`}
+						>
+							Home
+						</Link>
+						<Link
+							href='/public'
+							className={`px-3 py-2 text-sm font-medium ${
+								pathname === '/public'
+									? 'text-[var(--color-accent)]'
+									: 'text-[var(--color-text)] hover:text-[var(--color-accent)]'
+							}`}
+						>
+							Public
+						</Link>
+						<Link
+							href='/profile'
+							className={`px-3 py-2 text-sm font-medium ${
+								pathname === '/profile'
+									? 'text-[var(--color-accent)]'
+									: 'text-[var(--color-text)] hover:text-[var(--color-accent)]'
+							}`}
+						>
+							Profile
+						</Link>
 					</div>
-					<div className='flex items-center'>
+					<div>
 						{session ? (
 							<button
 								onClick={() => signOut({ callbackUrl: '/' })}
@@ -62,7 +58,7 @@ export default function NavBar() {
 						) : (
 							<Link
 								href='/login'
-								className='rounded-md bg-[var(--accent)] px-3 py-2 text-sm font-medium text-white hover:bg-opacity-90'
+								className='rounded-md bg-[var(--color-accent)] px-3 py-2 text-sm font-medium text-white hover:opacity-90'
 							>
 								Sign In
 							</Link>
