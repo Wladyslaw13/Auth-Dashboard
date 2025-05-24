@@ -8,13 +8,13 @@
 	--color-accent: #8b5a2b;
 }
 
-.theme-dark {
+html.theme-dark {
 	--color-bg: #1f1f1f;
 	--color-text: #eaeaea;
 	--color-accent: #d69e6f;
 }
 
-.theme-coffee {
+html.theme-coffee {
 	--color-bg: #f5e9d9;
 	--color-text: #3e2f1c;
 	--color-accent: #a97449;
