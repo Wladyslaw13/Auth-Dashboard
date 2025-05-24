@@ -1,5 +1,6 @@
 'use client'
 
+import OAuthButtons from '@/components/OAuthButtons'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
@@ -114,12 +115,13 @@ export default function LoginPage() {
 						<button
 							type='submit'
 							disabled={loading}
-							className='group relative flex w-full justify-center rounded-md bg-[var(--accent)] px-3 py-2 text-sm font-semibold text-white hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 disabled:bg-opacity-70'
+							className='group relative flex w-full justify-center rounded-md bg-[var(--accent)] px-3 py-2 text-sm font-semibold text-white hover:opacity-85 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 disabled:bg-opacity-70 cursor-pointer'
 						>
 							{loading ? 'Signing in...' : 'Sign in'}
 						</button>
 					</div>
 				</form>
+				<OAuthButtons />
 				<div className='text-center text-sm'>
 					Don&apos;t have an account?{' '}
 					<Link
