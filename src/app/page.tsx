@@ -2,30 +2,30 @@ import Link from 'next/link'
 
 export default function Home() {
 	return (
-		<div className='flex h-[80vh] flex-col items-center justify-center p-4 bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-300'>
-			<div className='w-full max-w-2xl space-y-8 rounded-lg border border-[var(--color-accent)] bg-[var(--color-bg)] p-6 shadow-md'>
-				<h1 className='text-3xl font-bold text-[var(--color-accent)]'>
+		<main className='flex min-h-[80vh] items-center justify-center bg-[var(--color-bg)] p-4 text-[var(--color-text)] transition-colors duration-300'>
+			<section className='w-full max-w-2xl space-y-6 rounded-lg border border-[var(--color-accent)] bg-[var(--color-bg)] p-6 shadow-md sm:space-y-8 sm:p-8'>
+				<h1 className='text-2xl font-bold text-[var(--color-accent)] sm:text-3xl'>
 					Welcome to Mini Dashboard
 				</h1>
-				<p className='text-lg'>
+				<p className='text-base sm:text-lg'>
 					This is a simple dashboard application with authentication using
 					Next.js, NextAuth, and Prisma.
 				</p>
-				<div className='flex space-x-4'>
+				<div className='flex flex-col gap-3 sm:flex-row sm:gap-4'>
 					<Link
 						href='/public'
-						className='rounded-md bg-[var(--color-bg)] px-4 py-2 text-[var(--color-text)] hover:bg-[var(--color-accent)] hover:text-white transition-colors'
+						className='inline-block rounded-md bg-[var(--color-bg)] px-4 py-2 text-center text-[var(--color-text)] transition-colors hover:bg-[var(--color-accent)] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]'
 					>
 						Public Page
 					</Link>
 					<Link
 						href='/profile'
-						className='rounded-md bg-[var(--color-accent)] px-4 py-2 text-white hover:opacity-90 transition-opacity'
+						className='inline-block rounded-md bg-[var(--color-accent)] px-4 py-2 text-center text-white transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]'
 					>
 						Profile Page
 					</Link>
 				</div>
-			</div>
-		</div>
+			</section>
+		</main>
 	)
 }

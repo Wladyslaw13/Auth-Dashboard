@@ -52,70 +52,70 @@ export default function RegisterPage() {
 				const resJson = await response.json()
 				setError(resJson?.message || 'Registration failed')
 			}
-		} catch (error) {
-			setError(error instanceof Error ? error.message : 'An error occurred')
+		} catch (err) {
+			setError(err instanceof Error ? err.message : 'An error occurred')
 		} finally {
 			setLoading(false)
 		}
 	}
 
 	return (
-		<div className='flex h-[85vh] items-center justify-center bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-300 p-4'>
-			<div className='w-full max-w-sm rounded-lg border border-[var(--color-accent)] bg-[var(--color-bg)] p-6 shadow-md space-y-6'>
-				<h2 className='text-center text-2xl font-bold text-[var(--color-accent)]'>
+		<div className='flex min-h-screen items-center justify-center bg-[var(--color-bg)] text-[var(--color-text)] p-4'>
+			<div className='w-full max-w-sm rounded-lg border border-[var(--color-accent)] bg-[var(--color-bg)] p-5 shadow-md'>
+				<h2 className='text-center text-2xl font-bold text-[var(--color-accent)] mb-4'>
 					Create account
 				</h2>
 
-				{error && (
-					<div className='rounded-md bg-red-100 p-3 text-red-700 text-sm'>
-						{error}
-					</div>
-				)}
+				<form className='flex flex-col gap-4' onSubmit={handleSubmit}>
+					{error && (
+						<div className='rounded-md bg-red-100 p-2 text-red-700 text-sm'>
+							{error}
+						</div>
+					)}
 
-				<form className='space-y-4' onSubmit={handleSubmit}>
-					<div className='space-y-3'>
-						<input
-							id='name'
-							name='name'
-							type='text'
-							placeholder='Your name'
-							autoComplete='name'
-							value={name}
-							onChange={e => setName(e.target.value.trim())}
-							className='w-full rounded-md border border-[var(--color-accent)] bg-transparent p-2 text-sm focus:ring-1 focus:ring-[var(--color-accent)]'
-						/>
-						<input
-							id='email'
-							name='email'
-							type='email'
-							placeholder='you@example.com'
-							autoComplete='email'
-							value={email}
-							onChange={e => setEmail(e.target.value.trim())}
-							className='w-full rounded-md border border-[var(--color-accent)] bg-transparent p-2 text-sm focus:ring-1 focus:ring-[var(--color-accent)]'
-						/>
-						<input
-							id='password'
-							name='password'
-							type='password'
-							placeholder='Password'
-							autoComplete='new-password'
-							value={password}
-							onChange={e => setPassword(e.target.value.trim())}
-							className='w-full rounded-md border border-[var(--color-accent)] bg-transparent p-2 text-sm focus:ring-1 focus:ring-[var(--color-accent)]'
-						/>
-					</div>
+					<input
+						id='name'
+						name='name'
+						type='text'
+						placeholder='Your name'
+						autoComplete='name'
+						value={name}
+						onChange={e => setName(e.target.value.trim())}
+						className='w-full rounded-md border border-[var(--color-accent)] bg-transparent p-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]'
+					/>
+
+					<input
+						id='email'
+						name='email'
+						type='email'
+						placeholder='you@example.com'
+						autoComplete='email'
+						value={email}
+						onChange={e => setEmail(e.target.value.trim())}
+						className='w-full rounded-md border border-[var(--color-accent)] bg-transparent p-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]'
+					/>
+
+					<input
+						id='password'
+						name='password'
+						type='password'
+						placeholder='Password'
+						autoComplete='new-password'
+						value={password}
+						onChange={e => setPassword(e.target.value.trim())}
+						className='w-full rounded-md border border-[var(--color-accent)] bg-transparent p-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]'
+					/>
 
 					<button
 						type='submit'
 						disabled={loading}
-						className='w-full rounded-md bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-white hover:opacity-90 disabled:opacity-70'
+						className='w-full rounded-md bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-70 focus-visible:ring-2'
 					>
 						{loading ? 'Creating account...' : 'Sign up'}
 					</button>
 				</form>
 
-				<p className='text-center text-sm'>
+				<p className='text-center text-sm mt-4'>
 					Already have an account?{' '}
 					<Link
 						href='/login'

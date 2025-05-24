@@ -6,32 +6,36 @@ export default function ProfilePage() {
 	const { data: session, status } = useSession()
 
 	if (status === 'loading') {
-		return <p>Loading...</p>
+		return (
+			<div className='flex min-h-screen items-center justify-center text-[var(--color-text)]'>
+				<p>Loading...</p>
+			</div>
+		)
 	}
 
 	return (
-		<div className='flex h-[80vh] flex-col items-center justify-center p-4 bg-[var(--color-bg)]'>
-			<div className='w-full max-w-2xl space-y-8 rounded-lg border bg-[var(--color-bg)] p-6 shadow-md'>
-				<h1 className='text-3xl font-bold text-[var(--color-accent)]'>
+		<div className='min-h-screen bg-[var(--color-bg)] p-4 text-[var(--color-text)] flex justify-center'>
+			<div className='w-full max-w-xl rounded-lg border border-[var(--color-accent)] bg-[var(--color-bg)] p-6 shadow-md space-y-6 overflow-auto'>
+				<h1 className='text-2xl sm:text-3xl font-bold text-[var(--color-accent)]'>
 					Profile Page
 				</h1>
-				<p className='text-lg text-[var(--color-text)]'>
-					Welcome, {session?.user?.name || 'user'}!
-				</p>
-				<p className='text-[var(--color-text)]'>
-					This is a protected page that only authenticated users can access.
+
+				<p className='text-base sm:text-lg'>
+					Welcome, <strong>{session?.user?.name || 'User'}</strong>!
 				</p>
 
-				<div className='rounded-md bg-[var(--color-bg)] p-4 border'>
-					<h2 className='text-xl font-semibold text-[var(--color-accent)]'>
+				<p>This is a protected page only visible to authenticated users.</p>
+
+				<div className='rounded-md border bg-[var(--color-bg)] p-4 text-sm sm:text-base'>
+					<h2 className='text-lg font-semibold text-[var(--color-accent)] mb-2'>
 						Your Information
 					</h2>
-					<ul className='mt-2 space-y-2 text-[var(--color-text)]'>
+					<ul className='space-y-2'>
 						<li>
-							<strong>Email:</strong> {session?.user?.email}
+							<strong>Email:</strong> {session?.user?.email || 'Not provided'}
 						</li>
 						<li>
-							<strong>User ID:</strong> {session?.user?.id}
+							<strong>User ID:</strong> {session?.user?.id || 'Unavailable'}
 						</li>
 					</ul>
 				</div>
