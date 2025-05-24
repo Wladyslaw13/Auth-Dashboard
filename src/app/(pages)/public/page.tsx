@@ -1,3 +1,5 @@
+import GitHubLink from '@/components/GitHubLink'
+
 export default function PublicPage() {
 	return (
 		<div className='flex h-[80vh] flex-col items-center justify-center p-4 bg-[var(--color-bg)]'>
@@ -13,6 +15,9 @@ export default function PublicPage() {
 					Try navigating to the profile page — you’ll be redirected to login if
 					not authenticated.
 				</p>
+				<div className='pt-2 text-right'>
+					<GitHubLink />
+				</div>
 			</div>
 		</div>
 	)
