@@ -14,8 +14,8 @@ export default function ProfilePage() {
 	}
 
 	return (
-		<div className='min-h-screen bg-[var(--color-bg)] p-4 text-[var(--color-text)] flex justify-center'>
-			<div className='w-full max-w-xl rounded-lg border border-[var(--color-accent)] bg-[var(--color-bg)] p-6 shadow-md space-y-6 overflow-auto'>
+		<main className='flex min-h-[80vh] items-center justify-center bg-[var(--color-bg)] p-4 text-[var(--color-text)]'>
+			<section className='w-full max-w-2xl space-y-6 rounded-lg border bg-[var(--color-bg)] p-6 shadow-md sm:space-y-8 sm:p-8'>
 				<h1 className='text-2xl sm:text-3xl font-bold text-[var(--color-accent)]'>
 					Profile Page
 				</h1>
@@ -39,7 +39,7 @@ export default function ProfilePage() {
 						</li>
 					</ul>
 				</div>
-			</div>
-		</div>
+			</section>
+		</main>
 	)
 }
