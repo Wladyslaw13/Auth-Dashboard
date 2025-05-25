@@ -37,7 +37,7 @@ export const authOptions: NextAuthOptions = {
 					return null
 				}
 
-				const isPasswordValid = bcrypt.compare(
+				const isPasswordValid = await bcrypt.compare(
 					credentials.password,
 					user.password!
 				)
@@ -82,6 +82,10 @@ export const authOptions: NextAuthOptions = {
 				httpOnly: true,
 				sameSite: 'lax',
 				path: '/',
+				secure:
+					process.env.VERCEL_ENV === 'production' ||
+					process.env.VERCEL_ENV === 'preview' ||
+					process.env.NODE_ENV === 'production',
 			},
 		},
 	},
