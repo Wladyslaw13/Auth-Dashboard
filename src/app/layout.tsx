@@ -1,4 +1,7 @@
+import '../i18n/index'
+
 import AuthProvider from '@/components/AuthProvider'
+import LanguageSelector from '@/components/LanguageSelector'
 import NavBar from '@/components/NavBar'
 import ThemeToggle from '@/components/ThemeToggle'
 import { authOptions } from '@/lib/auth'
@@ -10,8 +13,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-	title: 'Mini Dashboard',
-	description: 'A mini dashboard with authentication',
+	title: 'Auth Dashboard',
 }
 
 export default async function RootLayout({
@@ -22,12 +24,13 @@ export default async function RootLayout({
 	const session = await getServerSession(authOptions)
 
 	return (
-		<html>
+		<html lang='en' suppressHydrationWarning>
 			<head>
 				<script
 					dangerouslySetInnerHTML={{
 						__html: `
 							(function() {
+							  'use client';
 								try {
 									const theme = localStorage.getItem('theme');
 									if (theme === 'dark') {
@@ -44,8 +47,9 @@ export default async function RootLayout({
 			<body className={inter.className}>
 				<AuthProvider session={session}>
 					<NavBar />
-					<main>{children}</main>
 					<ThemeToggle />
+					<LanguageSelector />
+					<main>{children}</main>
 				</AuthProvider>
 			</body>
 		</html>

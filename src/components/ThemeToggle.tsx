@@ -1,5 +1,7 @@
 'use client'
 
+import { useSidebarStore } from '@/app/store/store'
+import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { FaMoon, FaMugHot, FaSun } from 'react-icons/fa'
 
@@ -8,6 +10,8 @@ type Theme = (typeof themes)[number]
 
 export default function ThemeToggle() {
 	const [theme, setTheme] = useState<Theme>('light')
+
+	const isOpen = useSidebarStore(state => state.isOpen)
 
 	useEffect(() => {
 		try {
@@ -59,7 +63,10 @@ export default function ThemeToggle() {
 		<button
 			onClick={handleClick}
 			aria-label='Toggle theme'
-			className='fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-accent)] text-white shadow-lg transition hover:opacity-90'
+			className={clsx(
+				'fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-accent)] text-white shadow-lg hover:opacity-90 transition-opacity duration-200 ease-in-out',
+				isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+			)}
 		>
 			<span className='text-xl'>{icon}</span>
 		</button>

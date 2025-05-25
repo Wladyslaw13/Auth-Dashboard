@@ -1,9 +1,11 @@
 'use client'
 
 import { signIn } from 'next-auth/react'
+import { useTranslation } from 'react-i18next'
 import { FaGithub, FaGoogle } from 'react-icons/fa'
 
 export default function OAuthButtons() {
+	const { t } = useTranslation()
 	return (
 		<div
 			className='w-full max-w-sm space-y-3'
@@ -16,7 +18,7 @@ export default function OAuthButtons() {
 				aria-label='Sign in with Google'
 			>
 				<FaGoogle className='text-xl' />
-				<span className='font-medium'>Sign in with Google</span>
+				<span className='font-medium'>{t('common.google')}</span>
 			</button>
 
 			<button
@@ -25,7 +27,7 @@ export default function OAuthButtons() {
 				aria-label='Sign in with GitHub'
 			>
 				<FaGithub className='text-xl' />
-				<span className='font-medium'>Sign in with GitHub</span>
+				<span className='font-medium'>{t('common.github')}</span>
 			</button>
 		</div>
 	)
