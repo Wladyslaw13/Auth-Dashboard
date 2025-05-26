@@ -1,10 +1,9 @@
 'use client'
 
 import { useSession } from 'next-auth/react'
-import dynamic from 'next/dynamic'
 import { useTranslation } from 'react-i18next'
 
-const ProfilePage = () => {
+export default function ProfilePage() {
 	const { data: session, status } = useSession()
 	const { t } = useTranslation()
 
@@ -32,7 +31,7 @@ const ProfilePage = () => {
 
 				<div className='rounded-md border bg-[var(--color-bg)] p-4 text-sm sm:text-base'>
 					<h2 className='text-lg font-semibold text-[var(--color-accent)] mb-2'>
-						{t('commom.userinfo')}
+						{t('common.userinfo')}
 					</h2>
 					<ul className='space-y-2'>
 						<li>
@@ -49,5 +48,3 @@ const ProfilePage = () => {
 		</main>
 	)
 }
-
-export default dynamic(() => Promise.resolve(ProfilePage), { ssr: false })

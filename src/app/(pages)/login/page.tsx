@@ -2,14 +2,13 @@
 
 import OAuthButtons from '@/components/OAuthButtons'
 import { signIn } from 'next-auth/react'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
-const LoginPage = () => {
+export default function LoginPage() {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
@@ -122,5 +121,3 @@ const LoginPage = () => {
 		</div>
 	)
 }
-
-export default dynamic(() => Promise.resolve(LoginPage), { ssr: false })

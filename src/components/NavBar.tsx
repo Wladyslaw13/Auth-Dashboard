@@ -2,7 +2,6 @@
 
 import { useSidebarStore } from '@/app/store/store'
 import { signOut, useSession } from 'next-auth/react'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
@@ -10,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { HiMenu, HiX } from 'react-icons/hi'
 import { NavLinks } from './NavLinks'
 
-const NavBar = () => {
+export default function NavBar() {
 	const { data: session } = useSession()
 	const pathname = usePathname()
 	const sidebarRef = useRef(null)
@@ -120,5 +119,3 @@ const NavBar = () => {
 		</>
 	)
 }
-
-export default dynamic(() => Promise.resolve(NavBar), { ssr: false })

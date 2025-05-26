@@ -1,10 +1,9 @@
 'use client'
 
 import GitHubLink from '@/components/GitHubLink'
-import dynamic from 'next/dynamic'
 import { useTranslation } from 'react-i18next'
 
-const PublicPage = () => {
+export default function PublicPage() {
 	const { t } = useTranslation()
 	return (
 		<main className='flex min-h-[80vh] items-center justify-center bg-[var(--color-bg)] p-4 text-[var(--color-text)]'>
@@ -23,5 +22,3 @@ const PublicPage = () => {
 		</main>
 	)
 }
-
-export default dynamic(() => Promise.resolve(PublicPage), { ssr: false })

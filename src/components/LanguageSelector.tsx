@@ -4,7 +4,6 @@ import { useSidebarStore } from '@/app/store/store'
 import { Listbox } from '@headlessui/react'
 import { CheckIcon, GlobeAltIcon } from '@heroicons/react/24/solid'
 import clsx from 'clsx'
-import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -13,18 +12,21 @@ const languages = [
 	{ code: 'ru', label: 'RU' },
 ]
 
-const LanguageSelector = () => {
+export default function LanguageSelector() {
 	const { i18n } = useTranslation()
-	const [selectedLang, setSelectedLang] = useState(i18n.language || 'en')
+	const [selectedLang, setSelectedLang] = useState('en')
+	const [mounted, setMounted] = useState(false)
 
 	const isOpen = useSidebarStore(state => state.isOpen)
 
 	useEffect(() => {
 		const savedLang = localStorage.getItem('i18nextLng')
-		if (savedLang && languages.some(l => l.code === savedLang)) {
-			setSelectedLang(savedLang)
-			i18n.changeLanguage(savedLang)
-		}
+		const lang =
+			savedLang && languages.some(l => l.code === savedLang) ? savedLang : 'en'
+
+		setSelectedLang(lang)
+		i18n.changeLanguage(lang)
+		setMounted(true)
 	}, [i18n])
 
 	const handleChange = (lang: string) => {
@@ -33,10 +35,15 @@ const LanguageSelector = () => {
 		localStorage.setItem('i18nextLng', lang)
 	}
 
+	if (!mounted) return null
+
+	const selectedLabel =
+		languages.find(l => l.code === selectedLang)?.label ?? selectedLang
+
 	return (
 		<div
 			className={clsx(
-				'fixed top-[72px] right-4 z-40 transition-opacity duration-200  ease-in-out',
+				'fixed top-[72px] right-4 z-40 transition-opacity duration-200 ease-in-out',
 				isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
 			)}
 		>
@@ -47,7 +54,7 @@ const LanguageSelector = () => {
 						aria-label='Select language'
 					>
 						<GlobeAltIcon className='w-5 h-5' />
-						{languages.find(l => l.code === selectedLang)?.label}
+						{selectedLabel}
 					</Listbox.Button>
 					<Listbox.Options className='absolute right-0 mt-1 w-28 origin-top-right rounded-md bg-[var(--color-bg)] border border-[var(--color-accent)] shadow-lg focus:outline-none'>
 						{languages.map(lang => (
@@ -77,5 +84,3 @@ const LanguageSelector = () => {
 		</div>
 	)
 }
-
-export default dynamic(() => Promise.resolve(LanguageSelector), { ssr: false })

@@ -1,10 +1,9 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
-const Home = () => {
+export default function Home() {
 	const { t } = useTranslation()
 	return (
 		<main className='flex min-h-[80vh] items-center justify-center bg-[var(--color-bg)] p-4 text-[var(--color-text)] transition-colors duration-300'>
@@ -31,5 +30,3 @@ const Home = () => {
 		</main>
 	)
 }
-
-export default dynamic(() => Promise.resolve(Home), { ssr: false })

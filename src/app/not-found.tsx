@@ -1,8 +1,8 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import { useTranslation } from 'react-i18next'
-const NotFound = () => {
+
+export default function NotFound() {
 	const { t } = useTranslation()
 	return (
 		<div className='flex flex-col items-center justify-center h-[80vh] bg-[var(--color-bg)] text-[var(--color-text)] p-4 sm:p-6 text-center'>
@@ -13,5 +13,3 @@ const NotFound = () => {
 		</div>
 	)
 }
-
-export default dynamic(() => Promise.resolve(NotFound), { ssr: false })

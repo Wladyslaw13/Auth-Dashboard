@@ -1,13 +1,12 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
-const RegisterPage = () => {
+export default function RegisterPage() {
 	const router = useRouter()
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -130,5 +129,3 @@ const RegisterPage = () => {
 		</div>
 	)
 }
-
-export default dynamic(() => Promise.resolve(RegisterPage), { ssr: false })
