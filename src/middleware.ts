@@ -33,6 +33,17 @@ export async function middleware(request: NextRequest) {
 		}
 	}
 
+	if (request.nextUrl.pathname.startsWith('/login')) {
+		const token = await getToken({
+			req: request,
+			secret: process.env.NEXTAUTH_SECRET,
+		})
+
+		if (token) {
+			return NextResponse.redirect(new URL('/profile', request.url))
+		}
+	}
+
 	return NextResponse.next()
 }
 
