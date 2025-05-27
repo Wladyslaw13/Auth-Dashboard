@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
 	title: 'Auth Dashboard',
+	icons: {
+		icon: './icon.png',
+	},
 }
 
 export default async function RootLayout({

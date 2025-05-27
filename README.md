@@ -103,7 +103,7 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser.
 ## 🌍 Live Demo
 
 This project is deployed on **Vercel**:  
-👉 [View live](https://mini-dashboard-ecru.vercel.app/)
+👉 [View live](https://auth-dashboard-site.vercel.app/)
 
 ---
 

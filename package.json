@@ -1,7 +1,7 @@
 {
 	"name": "auth-dashboard",
 	"version": "2.0.0",
-	"description": "Auth Dashboard Next.js Project",
+	"description": "A modern, fully responsive authentication dashboard built with Next.js, NextAuth, Prisma, and Tailwind CSS. Includes OAuth, theme switching, i18n, and state management via Zustand.",
 	"scripts": {
 		"dev": "next dev",
 		"build": "prisma generate && next build",
@@ -11,27 +11,30 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Wladyslaw13/Mini-Dashboard.git"
+		"url": "git+https://github.com/Wladyslaw13/Auth-Dashboard.git"
 	},
 	"keywords": [
 		"nextjs",
-		"portfolio",
-		"react",
-		"frontend",
 		"next-auth",
 		"authentication",
-		"form",
-		"next",
+		"oauth",
+		"dashboard",
+		"admin-panel",
+		"tailwindcss",
+		"zustand",
 		"prisma",
-		"api",
-		"route"
+		"postgresql",
+		"i18n",
+		"typescript",
+		"dark-mode",
+		"auth-dashboard"
 	],
 	"author": "Vladislav <vladislav707pv@gmail.com>",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/Wladyslaw13/Mini-Dashboard.git/issues"
+		"url": "https://github.com/Wladyslaw13/Auth-Dashboard.git/issues"
 	},
-	"homepage": "https://github.com/Wladyslaw13/Mini-Dashboard.git#readme",
+	"homepage": "https://github.com/Wladyslaw13/Auth-Dashboard.git#readme",
 	"dependencies": {
 		"@auth/core": "^0.34.2",
 		"@auth/prisma-adapter": "^2.9.1",
