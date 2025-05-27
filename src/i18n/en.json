@@ -2,7 +2,7 @@
 	"common": {
 		"welcome": "Welcome to Auth Dashboard",
 		"justwelcome": "Welcome",
-		"description": "This is a simple dashboard application with authentication using Next.js, NextAuth, and Prisma.",
+		"description": "This is a fully responsive and accessible dashboard application built with Next.js, NextAuth, Prisma (PostgreSQL), and Tailwind CSS. It features seamless authentication via Google and GitHub, dynamic theming, multilingual support, and global state management with Zustand — all designed for modern, secure, and scalable web projects.",
 		"signin": "Sign in",
 		"signingin": "Signing in...",
 		"google": "Sign in with Google",

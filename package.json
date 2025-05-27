@@ -1,7 +1,7 @@
 {
 	"name": "auth-dashboard",
-	"version": "1.1.0",
-	"description": "Mini-Dashboard Next.js Project",
+	"version": "2.0.0",
+	"description": "Auth Dashboard Next.js Project",
 	"scripts": {
 		"dev": "next dev",
 		"build": "prisma generate && next build",
