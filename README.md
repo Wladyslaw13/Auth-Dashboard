@@ -31,6 +31,7 @@ Includes modern features like OAuth authentication, dark/light/coffee theme togg
 - [PostgreSQL](https://www.postgresql.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Zustand](https://zustand-demo.pmnd.rs/)
+- [i18next](https://www.i18next.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 
 ---
