@@ -27,15 +27,15 @@ export default async function RootLayout({
 				<script
 					dangerouslySetInnerHTML={{
 						__html: `(function() {
-							try {
-								const theme = localStorage.getItem('theme');
-								if (theme === 'dark') {
-									document.documentElement.classList.add('theme-dark');
-								} else if (theme === 'coffee') {
-									document.documentElement.classList.add('theme-coffee');
-								}
-							} catch (e) {}
-						})();`,
+			try {
+				const theme = localStorage.getItem('theme');
+				if (theme === 'dark') {
+					document.documentElement.classList.add('theme-dark');
+				} else if (theme === 'coffee') {
+					document.documentElement.classList.add('theme-coffee');
+				}
+			} catch (e) {}
+		})();`,
 					}}
 				/>
 			</head>

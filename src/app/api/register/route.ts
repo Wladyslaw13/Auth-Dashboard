@@ -9,7 +9,7 @@ export async function POST(request: Request) {
 		if (!email || !password || !name) {
 			return NextResponse.json(
 				{ message: 'All fields are required' },
-				{ status: 400 }
+				{ status: 400 },
 			)
 		}
 
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 		if (existingUser) {
 			return NextResponse.json(
 				{ message: 'User with this email already exists' },
-				{ status: 409 }
+				{ status: 409 },
 			)
 		}
 
@@ -40,13 +40,13 @@ export async function POST(request: Request) {
 				name: user.name,
 				email: user.email,
 			},
-			{ status: 201 }
+			{ status: 201 },
 		)
 	} catch (error) {
 		console.error('Registration error:', error)
 		return NextResponse.json(
 			{ message: 'Something went wrong' },
-			{ status: 500 }
+			{ status: 500 },
 		)
 	}
 }

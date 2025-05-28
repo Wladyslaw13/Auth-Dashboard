@@ -44,7 +44,7 @@ export default function LanguageSelector() {
 		<div
 			className={clsx(
 				'fixed top-[72px] right-4 z-40 transition-opacity duration-200 ease-in-out',
-				isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+				isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100',
 			)}
 		>
 			<Listbox value={selectedLang} onChange={handleChange}>
@@ -66,7 +66,7 @@ export default function LanguageSelector() {
 										'cursor-pointer px-4 py-2 text-sm',
 										active
 											? 'bg-[var(--color-accent)] text-white'
-											: 'text-[var(--color-text)]'
+											: 'text-[var(--color-text)]',
 									)
 								}
 							>

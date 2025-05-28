@@ -3,5 +3,20 @@
 	"tailwindCSS.includeLanguages": {
 		"plaintext": "html",
 		"postcss": "css"
-	}
+	},
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "explicit"
+	},
+	"[prisma]": {
+		"editor.defaultFormatter": "Prisma.prisma"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"prettier.configPath": ".prettierrc"
 }

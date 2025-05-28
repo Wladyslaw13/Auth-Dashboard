@@ -65,7 +65,7 @@ export default function ThemeToggle() {
 			aria-label='Toggle theme'
 			className={clsx(
 				'fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-accent)] text-white shadow-lg hover:opacity-90 transition-opacity duration-200 ease-in-out',
-				isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+				isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100',
 			)}
 		>
 			<span className='text-xl'>{icon}</span>
