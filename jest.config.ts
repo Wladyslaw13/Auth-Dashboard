@@ -9,7 +9,7 @@ const config: Config = {
 		'^@/(.*)$': '<rootDir>/src/$1'
 	},
 	transform: {
-		'^.+\\.(ts|tsx)$': 'babel-jest'
+		'^.+\\.(ts|tsx)$': ['babel-jest', { configFile: './babel-jest.config.js' }]
 	},
 	transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)']
 }
