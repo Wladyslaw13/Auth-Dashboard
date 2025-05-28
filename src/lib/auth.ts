@@ -17,9 +17,9 @@ export const authOptions: NextAuthOptions = {
 				email: {
 					label: 'Email',
 					type: 'email',
-					placeholder: 'vladislav@mail.com',
+					placeholder: 'vladislav@mail.com'
 				},
-				password: { label: 'Password', type: 'password' },
+				password: { label: 'Password', type: 'password' }
 			},
 			async authorize(credentials) {
 				if (!credentials?.email || !credentials?.password) {
@@ -28,8 +28,8 @@ export const authOptions: NextAuthOptions = {
 
 				const user = await prisma.user.findUnique({
 					where: {
-						email: credentials.email,
-					},
+						email: credentials.email
+					}
 				})
 
 				if (!user) {
@@ -37,10 +37,7 @@ export const authOptions: NextAuthOptions = {
 					return null
 				}
 
-				const isPasswordValid = await bcrypt.compare(
-					credentials.password,
-					user.password!,
-				)
+				const isPasswordValid = await bcrypt.compare(credentials.password, user.password!)
 
 				if (!isPasswordValid) {
 					return null
@@ -49,31 +46,31 @@ export const authOptions: NextAuthOptions = {
 				return {
 					id: user.id,
 					email: user.email,
-					name: user.name,
+					name: user.name
 				}
-			},
+			}
 		}),
 		GoogleProvider({
 			clientId: process.env.GOOGLE_CLIENT_ID!,
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
 			authorization: {
 				params: {
-					scope: 'openid email profile',
-				},
-			},
+					scope: 'openid email profile'
+				}
+			}
 		}),
 		GitHubProvider({
 			clientId: process.env.GITHUB_CLIENT_ID!,
 			clientSecret: process.env.GITHUB_CLIENT_SECRET!,
 			authorization: {
 				params: {
-					scope: 'read:user user:email',
-				},
-			},
-		}),
+					scope: 'read:user user:email'
+				}
+			}
+		})
 	],
 	session: {
-		strategy: 'jwt',
+		strategy: 'jwt'
 	},
 	cookies: {
 		sessionToken: {
@@ -85,13 +82,13 @@ export const authOptions: NextAuthOptions = {
 				secure:
 					process.env.VERCEL_ENV === 'production' ||
 					process.env.VERCEL_ENV === 'preview' ||
-					process.env.NODE_ENV === 'production',
-			},
-		},
+					process.env.NODE_ENV === 'production'
+			}
+		}
 	},
 	pages: {
 		signIn: '/login',
-		error: '/login',
+		error: '/login'
 	},
 	callbacks: {
 		async jwt({ token, user }): Promise<JWT> {
@@ -110,9 +107,9 @@ export const authOptions: NextAuthOptions = {
 					...session.user,
 					email: token.email,
 					id: token.id,
-					name: token.name,
-				},
+					name: token.name
+				}
 			}
-		},
-	},
+		}
+	}
 }

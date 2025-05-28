@@ -19,10 +19,7 @@ export default function NavBar() {
 
 	useEffect(() => {
 		const handleClickOutside = (e: MouseEvent) => {
-			if (
-				sidebarRef.current &&
-				!(sidebarRef.current as HTMLElement).contains(e.target as Node)
-			) {
+			if (sidebarRef.current && !(sidebarRef.current as HTMLElement).contains(e.target as Node)) {
 				setIsOpen(false)
 			}
 		}
@@ -34,9 +31,7 @@ export default function NavBar() {
 		<>
 			<nav className='fixed top-0 left-0 w-full z-30 backdrop-blur-md bg-[var(--color-bg)/80] border-b border-[var(--color-accent)] shadow-sm'>
 				<div className='flex items-center justify-between max-w-7xl mx-auto px-4 py-3'>
-					<span className='text-xl font-bold text-[var(--color-accent)]'>
-						Auth Dashboard
-					</span>
+					<span className='text-xl font-bold text-[var(--color-accent)]'>Auth Dashboard</span>
 					<button
 						className='text-2xl text-[var(--color-accent)] md:hidden'
 						onClick={() => setIsOpen(true)}
@@ -81,9 +76,7 @@ export default function NavBar() {
 					}`}
 				>
 					<div className='flex items-center justify-between p-4 border-b border-[var(--color-accent)]'>
-						<span className='font-bold text-[var(--color-accent)] text-lg'>
-							{t('common.menu')}
-						</span>
+						<span className='font-bold text-[var(--color-accent)] text-lg'>{t('common.menu')}</span>
 						<button
 							onClick={() => setIsOpen(false)}
 							className='text-2xl text-[var(--color-accent)]'

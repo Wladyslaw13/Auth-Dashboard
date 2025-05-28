@@ -9,8 +9,7 @@ type Props = {
 }
 
 export const NavLinks = ({ pathname, onNavigate }: Props) => {
-	const baseLink =
-		'block px-3 py-2 text-sm font-medium hover:text-[var(--color-accent)]'
+	const baseLink = 'block px-3 py-2 text-sm font-medium hover:text-[var(--color-accent)]'
 	const { t } = useTranslation()
 
 	return (
@@ -19,9 +18,7 @@ export const NavLinks = ({ pathname, onNavigate }: Props) => {
 				href='/'
 				onClick={onNavigate}
 				className={`${baseLink} ${
-					pathname === '/'
-						? 'text-[var(--color-accent)]'
-						: 'text-[var(--color-text)]'
+					pathname === '/' ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]'
 				}`}
 			>
 				{t('common.home')}
@@ -30,9 +27,7 @@ export const NavLinks = ({ pathname, onNavigate }: Props) => {
 				href='/public'
 				onClick={onNavigate}
 				className={`${baseLink} ${
-					pathname === '/public'
-						? 'text-[var(--color-accent)]'
-						: 'text-[var(--color-text)]'
+					pathname === '/public' ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]'
 				}`}
 			>
 				{t('common.public')}
@@ -41,9 +36,7 @@ export const NavLinks = ({ pathname, onNavigate }: Props) => {
 				href='/profile'
 				onClick={onNavigate}
 				className={`${baseLink} ${
-					pathname === '/profile'
-						? 'text-[var(--color-accent)]'
-						: 'text-[var(--color-text)]'
+					pathname === '/profile' ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]'
 				}`}
 			>
 				{t('common.profile')}

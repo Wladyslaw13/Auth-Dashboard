@@ -9,5 +9,5 @@ export const useSidebarStore = create<SidebarStore>(set => ({
 	isOpen: false,
 	setIsOpen: open => {
 		set(() => ({ isOpen: open }))
-	},
+	}
 }))

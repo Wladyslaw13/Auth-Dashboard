@@ -9,15 +9,14 @@ export async function middleware(request: NextRequest) {
 		const username = process.env.DEV_AUTH_USERNAME || ''
 		const password = process.env.DEV_AUTH_PASSWORD || ''
 		const basicAuth = request.headers.get('authorization')
-		const expected =
-			'Basic ' + Buffer.from(`${username}:${password}`).toString('base64')
+		const expected = 'Basic ' + Buffer.from(`${username}:${password}`).toString('base64')
 
 		if (basicAuth !== expected) {
 			return new NextResponse('Unauthorized', {
 				status: 401,
 				headers: {
-					'WWW-Authenticate': 'Basic realm="Secure Dev/Preview Area"',
-				},
+					'WWW-Authenticate': 'Basic realm="Secure Dev/Preview Area"'
+				}
 			})
 		}
 	}
@@ -25,7 +24,7 @@ export async function middleware(request: NextRequest) {
 	if (request.nextUrl.pathname.startsWith('/profile')) {
 		const token = await getToken({
 			req: request,
-			secret: process.env.NEXTAUTH_SECRET,
+			secret: process.env.NEXTAUTH_SECRET
 		})
 
 		if (!token) {
@@ -36,7 +35,7 @@ export async function middleware(request: NextRequest) {
 	if (request.nextUrl.pathname.startsWith('/login')) {
 		const token = await getToken({
 			req: request,
-			secret: process.env.NEXTAUTH_SECRET,
+			secret: process.env.NEXTAUTH_SECRET
 		})
 
 		if (token) {
@@ -48,5 +47,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-	matcher: ['/profile/:path*', '/((?!_next|favicon.ico|api).*)'],
+	matcher: ['/profile/:path*', '/((?!_next|favicon.ico|api).*)']
 }

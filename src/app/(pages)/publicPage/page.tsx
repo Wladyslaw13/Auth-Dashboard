@@ -14,9 +14,9 @@ export default function PublicPage() {
 				<p className='text-base sm:text-lg'>{t('common.public-desc')}</p>
 				<p className='rounded-md border bg-[var(--color-bg)] p-4 text-[var(--color-text)]'>
 					{t('common.public-final-desc')}
-				                                </p>
+				</p>
 				<div className='text-right pt-2'>
-<GitHubLink />
+					<GitHubLink />
 				</div>
 			</section>
 		</main>

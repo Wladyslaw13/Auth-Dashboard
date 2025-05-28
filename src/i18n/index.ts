@@ -14,14 +14,14 @@ i18n
 		supportedLngs: ['en', 'ru'],
 		resources: {
 			en: { translation: en },
-			ru: { translation: ru },
+			ru: { translation: ru }
 		},
 		detection: {
 			order: ['localStorage', 'navigator'],
-			caches: ['localStorage'],
+			caches: ['localStorage']
 		},
 		debug: false,
-		interpolation: { escapeValue: false },
+		interpolation: { escapeValue: false }
 	})
 
 export default i18n

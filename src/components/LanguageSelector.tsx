@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 
 const languages = [
 	{ code: 'en', label: 'EN' },
-	{ code: 'ru', label: 'RU' },
+	{ code: 'ru', label: 'RU' }
 ]
 
 export default function LanguageSelector() {
@@ -21,8 +21,7 @@ export default function LanguageSelector() {
 
 	useEffect(() => {
 		const savedLang = localStorage.getItem('i18nextLng')
-		const lang =
-			savedLang && languages.some(l => l.code === savedLang) ? savedLang : 'en'
+		const lang = savedLang && languages.some(l => l.code === savedLang) ? savedLang : 'en'
 
 		setSelectedLang(lang)
 		i18n.changeLanguage(lang)
@@ -37,14 +36,13 @@ export default function LanguageSelector() {
 
 	if (!mounted) return null
 
-	const selectedLabel =
-		languages.find(l => l.code === selectedLang)?.label ?? selectedLang
+	const selectedLabel = languages.find(l => l.code === selectedLang)?.label ?? selectedLang
 
 	return (
 		<div
 			className={clsx(
 				'fixed top-[72px] right-4 z-40 transition-opacity duration-200 ease-in-out',
-				isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100',
+				isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
 			)}
 		>
 			<Listbox value={selectedLang} onChange={handleChange}>
@@ -64,9 +62,7 @@ export default function LanguageSelector() {
 								className={({ active }) =>
 									clsx(
 										'cursor-pointer px-4 py-2 text-sm',
-										active
-											? 'bg-[var(--color-accent)] text-white'
-											: 'text-[var(--color-text)]',
+										active ? 'bg-[var(--color-accent)] text-white' : 'text-[var(--color-text)]'
 									)
 								}
 							>

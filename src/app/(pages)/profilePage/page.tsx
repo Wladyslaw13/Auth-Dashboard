@@ -23,8 +23,7 @@ export default function ProfilePage() {
 				</h1>
 
 				<p className='text-base sm:text-lg'>
-					{t('common.justwelcome')},{' '}
-					<strong>{session?.user?.name || t('common.user')}</strong>!
+					{t('common.justwelcome')}, <strong>{session?.user?.name || t('common.user')}</strong>!
 				</p>
 
 				<p>{t('common.profile-desc')}</p>
@@ -39,8 +38,7 @@ export default function ProfilePage() {
 							{session?.user?.email || t('common.notprovided')}
 						</li>
 						<li>
-							<strong>{t('common.userid')}:</strong>{' '}
-							{session?.user?.id || t('common.unavailable')}
+							<strong>{t('common.userid')}:</strong> {session?.user?.id || t('common.unavailable')}
 						</li>
 					</ul>
 				</div>

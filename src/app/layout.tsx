@@ -10,15 +10,11 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
 	title: 'Auth Dashboard',
 	icons: {
-		icon: './icon.png',
-	},
+		icon: './icon.png'
+	}
 }
 
-export default async function RootLayout({
-	children,
-}: {
-	children: React.ReactNode
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	const session = await getServerSession(authOptions)
 
 	return (
@@ -35,7 +31,7 @@ export default async function RootLayout({
 					document.documentElement.classList.add('theme-coffee');
 				}
 			} catch (e) {}
-		})();`,
+		})();`
 					}}
 				/>
 			</head>

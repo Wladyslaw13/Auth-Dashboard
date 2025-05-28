@@ -7,7 +7,7 @@ const ClientLayout = dynamic(() => import('./ClientLayout'), { ssr: false })
 
 export default function ClientWrapper({
 	children,
-	session,
+	session
 }: {
 	children: React.ReactNode
 	session: Session | null
