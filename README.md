@@ -14,7 +14,6 @@
   </a>
 </p>
 
-
 ---
 
 # Auth Dashboard <img src="src/app/icon.png" height="40" />
@@ -87,8 +86,8 @@ NEXTAUTH_URL="http://localhost:3000"
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 
-GITHUB_CLIENT_ID=your-github-client-id
-GITHUB_CLIENT_SECRET=your-github-client-secret
+GITHUB_ID=your-github-client-id
+GITHUB_SECRET=your-github-client-secret
 ```
 
 > You can use services like **Railway**, **Neon**, **Render** or **Supabase** if you don’t want to set up a PostgreSQL server locally.
@@ -136,4 +135,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 Contributions, issues and feature requests are welcome!  
 Feel free to check [issues page](https://github.com/Wladyslaw13/Auth-Dashboard/issues).
-
