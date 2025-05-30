@@ -4,10 +4,10 @@
 	"description": "A modern, fully responsive authentication dashboard built with Next.js, NextAuth, Prisma, and Tailwind CSS. Includes OAuth, theme switching, i18n, and state management via Zustand.",
 	"scripts": {
 		"dev": "next dev",
+		"postinstall": "prisma generate && node -e \"if (!process.env.CI) require('child_process').execSync('prisma db push', { stdio: 'inherit' })\"",
 		"build": "prisma generate && next build",
 		"start": "next start",
 		"lint": "next lint",
-		"postinstall": "prisma generate && prisma db push",
 		"format": "prettier --write .",
 		"prepare": "husky",
 		"test": "jest",
