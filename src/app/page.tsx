@@ -1,31 +1,32 @@
+'use client'
+
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 export default function Home() {
+	const { t } = useTranslation()
 	return (
-		<div className='flex h-[80vh] flex-col items-center justify-center p-4 bg-[var(--milk-light)]'>
-			<div className='w-full max-w-2xl space-y-8 rounded-lg border bg-[var(--coffee-light)] p-6 shadow-md'>
-				<h1 className='text-3xl font-bold text-[var(--accent)]'>
-					Welcome to Mini Dashboard
+		<main className='flex min-h-[80vh] items-center justify-center bg-[var(--color-bg)] p-4 text-[var(--color-text)] transition-colors duration-300'>
+			<section className='w-full max-w-2xl space-y-6 rounded-lg border border-[var(--color-accent)] bg-[var(--color-bg)] p-6 shadow-md sm:space-y-8 sm:p-8'>
+				<h1 className='text-2xl font-bold text-[var(--color-accent)] sm:text-3xl'>
+					{t('common.welcome')}
 				</h1>
-				<p className='text-lg'>
-					This is a simple dashboard application with authentication using
-					Next.js, NextAuth, and Prisma.
-				</p>
-				<div className='flex space-x-4'>
+				<p className='text-base sm:text-lg'>{t('common.description')}</p>
+				<div className='flex flex-col gap-3 sm:flex-row sm:gap-4'>
 					<Link
 						href='/public'
-						className='rounded-md bg-[var(--milk-dark)] px-4 py-2 text-gray-700 hover:bg-opacity-90'
+						className='inline-block rounded-md bg-[var(--color-bg)] px-4 py-2 text-center text-[var(--color-text)] transition-colors hover:bg-[var(--color-accent)] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]'
 					>
-						Public Page
+						{t('common.public')}
 					</Link>
 					<Link
 						href='/profile'
-						className='rounded-md bg-[var(--accent)] px-4 py-2 text-white hover:bg-opacity-90'
+						className='inline-block rounded-md bg-[var(--color-accent)] px-4 py-2 text-center text-white transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]'
 					>
-						Profile Page
+						{t('common.profile')}
 					</Link>
 				</div>
-			</div>
-		</div>
+			</section>
+		</main>
 	)
 }

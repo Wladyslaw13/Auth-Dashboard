@@ -1,40 +1,48 @@
 'use client'
 
 import { useSession } from 'next-auth/react'
+import { useTranslation } from 'react-i18next'
 
 export default function ProfilePage() {
 	const { data: session, status } = useSession()
+	const { t } = useTranslation()
 
 	if (status === 'loading') {
-		return <p>Loading...</p>
+		return (
+			<div className='flex min-h-screen items-center justify-center text-[var(--color-text)]'>
+				<p>{t('common.loading')}</p>
+			</div>
+		)
 	}
 
 	return (
-		<div className='flex h-[80vh] flex-col items-center justify-center p-4 bg-[var(--milk-light)]'>
-			<div className='w-full max-w-2xl space-y-8 rounded-lg border bg-[var(--coffee-light)] p-6 shadow-md'>
-				<h1 className='text-3xl font-bold text-[var(--accent)]'>
-					Profile Page
+		<main className='flex min-h-[80vh] items-center justify-center bg-[var(--color-bg)] p-4 text-[var(--color-text)]'>
+			<section className='w-full max-w-2xl space-y-6 rounded-lg border bg-[var(--color-bg)] p-6 shadow-md sm:space-y-8 sm:p-8'>
+				<h1 className='text-2xl sm:text-3xl font-bold text-[var(--color-accent)]'>
+					{t('common.profile')}
 				</h1>
-				<div className='space-y-4'>
-					<p className='text-lg'>Welcome, {session?.user?.name || 'user'}!</p>
-					<p>
-						This is a protected page that only authenticated users can access.
-					</p>
-					<div className='rounded-md bg-[var(--milk-medium)] p-4'>
-						<h2 className='text-xl font-semibold text-[var(--accent)]'>
-							Your Information
-						</h2>
-						<ul className='mt-2 space-y-2'>
-							<li>
-								<strong>Email:</strong> {session?.user?.email}
-							</li>
-							<li>
-								<strong>User ID:</strong> {session?.user?.id}
-							</li>
-						</ul>
-					</div>
+
+				<p className='text-base sm:text-lg'>
+					{t('common.justwelcome')}, <strong>{session?.user?.name || t('common.user')}</strong>!
+				</p>
+
+				<p>{t('common.profile-desc')}</p>
+
+				<div className='rounded-md border bg-[var(--color-bg)] p-4 text-sm sm:text-base'>
+					<h2 className='text-lg font-semibold text-[var(--color-accent)] mb-2'>
+						{t('common.userinfo')}
+					</h2>
+					<ul className='space-y-2'>
+						<li>
+							<strong>{t('common.email')}:</strong>{' '}
+							{session?.user?.email || t('common.notprovided')}
+						</li>
+						<li>
+							<strong>{t('common.userid')}:</strong> {session?.user?.id || t('common.unavailable')}
+						</li>
+					</ul>
 				</div>
-			</div>
-		</div>
+			</section>
+		</main>
 	)
 }

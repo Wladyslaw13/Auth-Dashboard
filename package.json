@@ -1,60 +1,101 @@
 {
-	"name": "mini-dashboard",
-	"version": "1.0.0",
-	"description": "Mini-Dashboard Next.js Project",
+	"name": "auth-dashboard",
+	"version": "2.0.0",
+	"description": "A modern, fully responsive authentication dashboard built with Next.js, NextAuth, Prisma, and Tailwind CSS. Includes OAuth, theme switching, i18n, and state management via Zustand.",
 	"scripts": {
 		"dev": "next dev",
 		"build": "prisma generate && next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"postinstall": "prisma generate && prisma db push",
+		"format": "prettier --write .",
+		"prepare": "husky",
+		"test": "jest",
+		"test:coverage": "jest --coverage",
+		"coveralls": "cat ./coverage/lcov.info | coveralls"
+	},
+	"lint-staged": {
+		"**/*.{js,jsx,ts,tsx}": [
+			"eslint --fix",
+			"prettier --write"
+		],
+		"**/*.{json,md,css,scss}": "prettier --write"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Wladyslaw13/Mini-Dashboard.git"
+		"url": "git+https://github.com/Wladyslaw13/Auth-Dashboard.git"
 	},
 	"keywords": [
 		"nextjs",
-		"portfolio",
-		"react",
-		"frontend",
 		"next-auth",
 		"authentication",
-		"form",
-		"next",
+		"oauth",
+		"dashboard",
+		"admin-panel",
+		"tailwindcss",
+		"zustand",
 		"prisma",
-		"api",
-		"route"
+		"postgresql",
+		"i18n",
+		"typescript",
+		"dark-mode",
+		"auth-dashboard"
 	],
 	"author": "Vladislav <vladislav707pv@gmail.com>",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/Wladyslaw13/Mini-Dashboard.git/issues"
+		"url": "https://github.com/Wladyslaw13/Auth-Dashboard.git/issues"
 	},
-	"homepage": "https://github.com/Wladyslaw13/Mini-Dashboard.git#readme",
+	"homepage": "https://github.com/Wladyslaw13/Auth-Dashboard.git#readme",
 	"dependencies": {
+		"@auth/core": "^0.34.2",
 		"@auth/prisma-adapter": "^2.9.1",
-		"@tailwindcss/postcss": "^4.1.7",
+		"@headlessui/react": "^2.2.4",
+		"@heroicons/react": "^2.2.0",
+		"autoprefixer": "^10.4.14",
 		"bcrypt": "^6.0.0",
+		"i18next": "^25.2.0",
+		"i18next-browser-languagedetector": "^8.1.0",
 		"next": "15.3.2",
 		"next-auth": "^4.24.11",
 		"pg": "^8.16.0",
+		"postcss": "^8.4.21",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"zod": "^3.25.20"
+		"react-i18next": "^15.5.2",
+		"react-icons": "^5.5.0",
+		"tailwindcss": "^3.3.3",
+		"zod": "^3.25.20",
+		"zustand": "^5.0.5"
 	},
 	"devDependencies": {
+		"@babel/preset-env": "^7.27.2",
+		"@babel/preset-react": "^7.27.1",
+		"@babel/preset-typescript": "^7.27.1",
 		"@eslint/eslintrc": "^3",
 		"@prisma/client": "^6.8.2",
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/react": "^16.3.0",
+		"@testing-library/user-event": "^14.6.1",
 		"@types/bcrypt": "^5.0.2",
+		"@types/jest": "^29.5.14",
 		"@types/node": "^20",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
-		"autoprefixer": "^10.4.21",
+		"babel-jest": "^29.7.0",
+		"coveralls": "^3.1.1",
 		"eslint": "^9",
 		"eslint-config-next": "15.3.2",
-		"postcss": "^8.5.3",
+		"husky": "^9.1.7",
+		"jest": "^29.7.0",
+		"jest-environment-jsdom": "^30.0.0-beta.3",
+		"jest-junit": "^16.0.0",
+		"lint-staged": "^16.1.0",
+		"prettier": "^3.5.3",
+		"prettier-plugin-tailwindcss": "^0.6.11",
 		"prisma": "^6.8.2",
-		"tailwindcss": "^4.1.7",
+		"ts-jest": "^29.3.4",
+		"ts-node": "^10.9.2",
 		"typescript": "^5"
 	}
 }

@@ -1,48 +1,33 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-	--coffee-light: #f5e9d9;
-	--coffee-medium: #e6d2ba;
-	--coffee-dark: #c4a484;
-	--milk-light: #fff8f0;
-	--milk-medium: #f8f0e5;
-	--milk-dark: #e8d8c3;
-	--accent: #8b5a2b;
+	--color-bg: #fff8f0;
+	--color-text: #1a1a1a;
+	--color-accent: #8b5a2b;
+}
+
+html.theme-dark {
+	--color-bg: #1f1f1f;
+	--color-text: #eaeaea;
+	--color-accent: #d69e6f;
+}
+
+html.theme-coffee {
+	--color-bg: #f5e9d9;
+	--color-text: #3e2f1c;
+	--color-accent: #a97449;
 }
 
 body {
-	background-color: var(--milk-light);
-	color: #333;
+	@apply transition-colors duration-300;
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 }
 
-.coffee-bg-light {
-	background-color: var(--coffee-light);
-}
-
-.coffee-bg-medium {
-	background-color: var(--coffee-medium);
-}
-
-.coffee-bg-dark {
-	background-color: var(--coffee-dark);
-}
-
-.milk-bg-light {
-	background-color: var(--milk-light);
-}
-
-.milk-bg-medium {
-	background-color: var(--milk-medium);
-}
-
-.milk-bg-dark {
-	background-color: var(--milk-dark);
-}
-
-.accent-color {
-	color: var(--accent);
-}
-
-.accent-bg {
-	background-color: var(--accent);
+body::-webkit-scrollbar {
+	display: none;
 }
