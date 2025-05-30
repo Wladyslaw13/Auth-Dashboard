@@ -2,6 +2,19 @@
   <img src="assets/preview.gif" alt="Auth Dashboard Preview" />
 </p>
 
+<p align="center">
+  <a href="https://github.com/Wladyslaw13/Auth-Dashboard/actions">
+    <img src="https://github.com/Wladyslaw13/Auth-Dashboard/actions/workflows/ci.yml/badge.svg" alt="CI Status" />
+  </a>
+  <a href="https://coveralls.io/github/Wladyslaw13/Auth-Dashboard?branch=main">
+    <img src="https://coveralls.io/repos/github/Wladyslaw13/Auth-Dashboard/badge.svg?branch=main" alt="Coverage Status" />
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" />
+  </a>
+</p>
+
+
 ---
 
 # Auth Dashboard <img src="src/app/icon.png" height="40" />
@@ -118,3 +131,9 @@ To maintain or contribute to this project, a working PostgreSQL database is requ
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!  
+Feel free to check [issues page](https://github.com/Wladyslaw13/Auth-Dashboard/issues).
+
