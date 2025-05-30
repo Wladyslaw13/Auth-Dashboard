@@ -131,3 +131,9 @@ To maintain or contribute to this project, a working PostgreSQL database is requ
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!  
+Feel free to check [issues page](https://github.com/Wladyslaw13/Auth-Dashboard/issues).
+
