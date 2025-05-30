@@ -11,7 +11,10 @@ const config: Config = {
 	transform: {
 		'^.+\\.(ts|tsx)$': ['babel-jest', { configFile: './babel-jest.config.js' }]
 	},
-	transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)']
+	transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
+	collectCoverage: true,
+	coverageDirectory: 'coverage',
+	coverageReporters: ['text', 'lcov']
 }
 
 export default config
