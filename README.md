@@ -7,7 +7,7 @@
     <img src="https://github.com/Wladyslaw13/Auth-Dashboard/actions/workflows/ci.yml/badge.svg?cache_buster=123" alt="CI Status" />
   </a>
   <a href="https://coveralls.io/github/Wladyslaw13/Auth-Dashboard?branch=main">
-    <img src="https://coveralls.io/repos/github/Wladyslaw13/Auth-Dashboard/badge.svg?branch=main?cache_buster=123" alt="Coverage Status" />
+    <img src="https://coveralls.io/repos/github/Wladyslaw13/Auth-Dashboard/badge.svg?branch=main&cache_buster=123" alt="Coverage Status" />
   </a>
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" />
