@@ -28,6 +28,8 @@ export async function middleware(request: NextRequest) {
 		})
 
 		console.log(JSON.stringify(token), 'TOKEN HERE', process.env.NODE_ENV, 'NODE_ENV HERE')
+		console.log('COOKIES:', request.cookies.getAll())
+		console.log('HEADERS:', request.headers.get('cookie'))
 
 		if (!token) {
 			return NextResponse.redirect(new URL('/login', request.url))
