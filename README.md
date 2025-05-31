@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/preview.gif" alt="Auth Dashboard Preview" />
+  <img src="assets/preview.gif?cache_buster=123" alt="Auth Dashboard Preview" />
 </p>
 
 <p align="center">
