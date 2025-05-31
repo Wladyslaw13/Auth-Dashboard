@@ -29,9 +29,11 @@ export default function NavBar() {
 
 	return (
 		<>
-			<nav className='fixed top-0 left-0 w-full z-30 backdrop-blur-md bg-[var(--color-bg)/80] border-b border-[var(--color-accent)] shadow-sm'>
-				<div className='flex items-center justify-between max-w-7xl mx-auto px-4 py-3'>
-					<span className='text-xl font-bold text-[var(--color-accent)]'>Auth Dashboard</span>
+			<nav className='fixed left-0 top-0 z-30 w-full border-b border-[var(--color-accent)] bg-[var(--color-bg)/80] shadow-sm backdrop-blur-md'>
+				<div className='mx-auto flex max-w-7xl items-center justify-between px-4 py-3'>
+					<Link className='text-xl font-bold text-[var(--color-accent)]' href='/'>
+						Auth Dashboard
+					</Link>
 					<button
 						className='text-2xl text-[var(--color-accent)] md:hidden'
 						onClick={() => setIsOpen(true)}
@@ -39,7 +41,7 @@ export default function NavBar() {
 					>
 						<HiMenu />
 					</button>
-					<div className='hidden md:flex space-x-6'>
+					<div className='hidden space-x-6 md:flex'>
 						<NavLinks pathname={pathname} />
 						{session ? (
 							<button
@@ -66,17 +68,17 @@ export default function NavBar() {
 			{/* Sidebar and overlay */}
 			<div
 				className={`fixed inset-0 z-40 transition-all duration-300 ${
-					isOpen ? 'bg-black/40 visible' : 'invisible'
+					isOpen ? 'visible bg-black/40' : 'invisible'
 				}`}
 			>
 				<aside
 					ref={sidebarRef}
-					className={`fixed top-0 left-0 h-full w-64 bg-[var(--color-bg)] shadow-lg transform transition-transform duration-300 z-50 ${
+					className={`fixed left-0 top-0 z-50 h-full w-64 transform bg-[var(--color-bg)] shadow-lg transition-transform duration-300 ${
 						isOpen ? 'translate-x-0' : '-translate-x-full'
 					}`}
 				>
-					<div className='flex items-center justify-between p-4 border-b border-[var(--color-accent)]'>
-						<span className='font-bold text-[var(--color-accent)] text-lg'>{t('common.menu')}</span>
+					<div className='flex items-center justify-between border-b border-[var(--color-accent)] p-4'>
+						<span className='text-lg font-bold text-[var(--color-accent)]'>{t('common.menu')}</span>
 						<button
 							onClick={() => setIsOpen(false)}
 							className='text-2xl text-[var(--color-accent)]'
@@ -85,7 +87,7 @@ export default function NavBar() {
 							<HiX />
 						</button>
 					</div>
-					<div className='p-4 space-y-4'>
+					<div className='space-y-4 p-4'>
 						<NavLinks pathname={pathname} onNavigate={() => setIsOpen(false)} />
 						{session ? (
 							<button
