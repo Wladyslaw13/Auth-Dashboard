@@ -15,7 +15,7 @@ export default function Home() {
 				<div className='flex flex-col gap-3 sm:flex-row sm:gap-4'>
 					<Link
 						href='/public'
-						className='inline-block rounded-md bg-[var(--color-bg)] px-4 py-2 text-center text-[var(--color-text)] transition-colors hover:bg-[var(--color-accent)] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]'
+						className='inline-block rounded-md bg-[var(--color-accent)] px-4 py-2 text-center text-white transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]'
 					>
 						{t('common.public')}
 					</Link>
